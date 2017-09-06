@@ -1,0 +1,187 @@
+.heading-style-projects {
+    color: #076daf;
+    font-family: 'helvetica_narrow_ceregular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 25px !important;
+    font-weight: bold;
+}
+
+.heading-style-projects:after {
+    content: ' ';
+    width: 100%;
+    height: 23px;
+    background-image: url(../img/tsvry4ka_2.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    display: block;
+    visibility: visible;
+}
+
+.heading-style-1 {
+    color: #076daf;
+    font-family: 'helvetica_narrow_ceregular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 25px !important;
+}
+
+.heading-style-1-lined:after {
+    content: ' ';
+    width: 100%;
+    height: 23px;
+    background-image: url(../img/tsvry4ka_1.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    display: block;
+    visibility: visible;
+}
+
+.heading-style-2 {
+    color: #076daf;
+    font-family: 'helvetica_narrow_ceregular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 22px !important;
+}
+
+.styled-headings h1 {
+    color: #0067ad;
+    font-family: 'helvetica_narrow_ceregular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 37px;
+}
+
+.styled-headings h2 {
+    color: #015197;
+    font-size: 18px;
+}
+
+.styled-headings h2:after {
+    content: ' ';
+    width: 100%;
+    height: 23px;
+    background-image: url(../img/tsvry4ka_1.png);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    display: block;
+    visibility: visible;
+}
+
+.styled-headings h4 {
+    color: #015197;
+    font-size: 16px;
+    font-family: 'helvetica_narrow_ceregular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.styled-headings h4:after {
+    content: ' ';
+    width: 100%;
+    height: 16px;
+    border-bottom: 1px solid #0067ad;
+    display: block;
+    visibility: visible;
+}
+
+.box-style-1-heading {
+    color: #015197;
+    font-family: "Helvetica";
+    font-size: 22px;
+    position: relative;
+    border-bottom: 2px solid #0067ad;
+    padding-left: 45px;
+    background-repeat: no-repeat;
+    min-height: 35px;
+    line-height: 33px;
+    margin-bottom: 0px;
+}
+
+.box-style-1-heading:after {
+    content: ' ';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+    background-color: #004797;
+    left: 0px;
+    top: 0px;
+    display: block;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.box-style-1-heading.ico-phone-white:after {
+    background-image: url('../img/ico-phone-white.png');
+}
+
+.box-style-1-heading.ico-truck-white:after {
+    background-image: url('../img/ico-truck-white.png');
+}
+
+.box-style-1-heading.ico-cart-white:after {
+    background-image: url('../img/ico-cart-white.png');
+}
+
+.box-style-1-heading.ico-none:after {
+    content: '';
+    display: none;
+    background: none;
+}
+
+
+/* ICONS */
+
+.horizontal-menu .menu_element_link.menu-item-id-75:before,
+.horizontal-menu .menu_element_link.menu-item-id-77:before,
+.horizontal-menu .menu_element_link.menu-item-id-78:before,
+.horizontal-menu .menu_element_link.menu-item-id-75:before,
+.horizontal-menu .menu_element_link.menu-item-id-76:before {
+    content: '';
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    
+    margin-right: 3px;
+    position: relative;
+    top: 1px;
+}
+
+.horizontal-menu .menu_element_link.menu-item-id-75:before {
+    background: rgba(0, 0, 0, 0) url("../img/icon/munit1.png") no-repeat scroll left center;
+    background-size: cover;
+}
+
+.horizontal-menu .menu_element_link.active.menu-item-id-75:before {
+    background: rgba(0, 0, 0, 0) url("../img/icon/munit1_active.png") no-repeat scroll left center;
+    background-size: cover;
+}
+
+.horizontal-menu .menu_element_link.menu-item-id-76:before {
+    background: rgba(0, 0, 0, 0) url("../img/icon/munit2.png") no-repeat scroll left center;
+    background-size: cover;
+}
+
+.horizontal-menu .menu_element_link.active.menu-item-id-76:before {
+    background: rgba(0, 0, 0, 0) url("../img/icon/munit2_active.png") no-repeat scroll left center;
+    background-size: cover;
+}
+.horizontal-menu .menu_element_link.menu-item-id-77:before {
+    background: rgba(0, 0, 0, 0) url("../img/icon/munit3.png") no-repeat scroll left center;
+    background-size: cover;
+}
+
+.horizontal-menu .menu_element_link.active.menu-item-id-77:before {
+    background: rgba(0, 0, 0, 0) url("../img/icon/munit3_active.png") no-repeat scroll left center;
+    background-size: cover;
+}
+.horizontal-menu .menu_element_link.menu-item-id-78:before {
+    background: rgba(0, 0, 0, 0) url("../img/icon/munit4.png") no-repeat scroll left center;
+    background-size: cover;
+}
+
+.horizontal-menu .menu_element_link.active.menu-item-id-78:before {
+    background: rgba(0, 0, 0, 0) url("../img/icon/munit4_active.png") no-repeat scroll left center;
+    background-size: cover;
+}
+/*
+.horizontal-menu .menu_element_link.menu-item-id-75 {
+   background: rgba(0, 0, 0, 0) url("../img/icon/tab2.png") no-repeat scroll 12px center / 16px 16px;
+    padding-left: 30px;
+}
+.horizontal-menu .menu_element_link.menu-item-id-76 {
+   background: rgba(0, 0, 0, 0) url("../img/icon/tab2.png") no-repeat scroll 12px center / 16px 16px;
+    padding-left: 30px;
+}*/
