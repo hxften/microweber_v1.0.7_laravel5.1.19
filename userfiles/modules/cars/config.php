@@ -7,10 +7,11 @@ $config['ui'] = true;
 $config['ui_admin'] = true; 
 $config['position'] = "98";
 $config['version'] = "0.01";
+$config['created_by'] = true;
 $config['tables'] = array(
     'cars' => array(
         'id' => 'integer',
-        'name' => array('type' => 'integer', 'default' => 0),
+        'name' => "text",
         'price' =>  array('type' => 'float', 'not_null'),
         'description' => 'text',
         'created_by' => 'integer',

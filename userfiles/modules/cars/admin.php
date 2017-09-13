@@ -1,5 +1,5 @@
 <label class="mw-ui-label">Say something
-
+admin
  <input
       name="my_text"
       class="mw_option_field"
