@@ -56,8 +56,9 @@ if($module_template == false and isset($params['template'])){
 	$module_template =$params['template'];
 }
 
-
-
+/*echo '<pre>';
+var_dump($config);*/
+//echo  'module_template:'.$module_template;// ''
 
 
 if($module_template != false){

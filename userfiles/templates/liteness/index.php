@@ -34,4 +34,5 @@
     </div>
   </div>
 </div>
+<?/*php include TEMPLATE_DIR.'db.php'; */?>
 <?php include TEMPLATE_DIR.'footer.php'; ?>
