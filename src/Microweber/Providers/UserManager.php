@@ -642,6 +642,8 @@ class UserManager
                     }
 
                     $next = $this->save($reg);
+                    echo 'next:'.$next;
+                    
                     $this->force_save = false;
                     $this->app->cache_manager->delete('users/global');
                     $this->session_del('captcha');
@@ -653,7 +655,21 @@ class UserManager
                     if (isset($pass2)) {
                         $params['password2'] = $pass2;
                     }
+                    /*$params = array(
+                          'username' ='jgwftest@163.com',
+                          'password' ='123aaa',
+                          'is_active' = 1,
+                          'id' =11,
+                          'password2' ='123aaa') */
+                    
+
                     $this->make_logged($params['id']);
+                    /*$user_session = array(
+                      'is_logged' ='yes',
+                      'user_id' =12,
+                      'old_session_id' ='8dafedc397f5472844e371ceaaecefcb3809ebb4',
+                      'success' ='You are logged in!)'*/
+
 
                     return array('success' => 'You have registered successfully');
                 } else {
@@ -674,6 +690,7 @@ class UserManager
             ob_start();
         }
         $data = $this->get_by_id($user_id);
+
         if (!$data) {
             return;
         }
