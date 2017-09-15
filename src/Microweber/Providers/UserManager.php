@@ -670,7 +670,6 @@ class UserManager
                       'old_session_id' ='8dafedc397f5472844e371ceaaecefcb3809ebb4',
                       'success' ='You are logged in!)'*/
 
-
                     return array('success' => 'You have registered successfully');
                 } else {
                     $try_login = $this->login($params);
