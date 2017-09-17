@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Config;
 use Laravel\Socialite\SocialiteManager;
 use Illuminate\Support\Facades\Session;
 use Auth;
+use Validator;
 use User;
 
 if (!defined('MW_USER_IP')) {
@@ -640,6 +641,30 @@ class UserManager
                     if (isset($params['attributes'])) {
                         $reg['attributes'] = $params['attributes'];
                     }
+
+            /*$rules = array(
+                'username' => 'required|min:4|max:20',
+                'email' => 'required|email',
+                'countrycode' => 'required|numeric',
+                'mobile' => 'required|numeric|digits_between:5,11',
+                'company_name' => 'required|between:3,20',
+            );
+            //$validator = Validator::make($reg, $rules);
+
+            $messages = [
+                "username.min" => "The user name is at least 44 bytes.",
+                "email" => "Must be a valid mailbox.",
+                'countrycode.numeric' => 'country must be digital.',
+                'mobile.digits_between' => 'mobile must be attribute must be between 5 and 11.',
+                'company_name.between' => 'companyname least 3 bytes.',
+            ];
+            $validator = Validator::make($reg, $rules, $messages);
+            if ($validator->fails()) {
+                //$res['error'] = 'true';
+                //return $res;
+                return array('error' => $validator->messages());
+            }*/
+            
 
                     $next = $this->save($reg);
                     echo 'next:'.$next;
