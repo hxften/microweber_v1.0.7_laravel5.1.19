@@ -39,6 +39,7 @@ class InstallController extends Controller {
 
         $connection = Config::get('database.connections');
         $this->install_log('Preparing to install');
+
         if (isset($input['make_install'])){
             if (!isset($input['db_pass'])){
                 $input['db_pass'] = '';
@@ -182,7 +183,7 @@ class InstallController extends Controller {
 
             return 'done';
         }
-
+    //echo $view;exit;//src\Microweber\Views/install.php
         $layout = new View($view);
 
         $defaultDbEngine = Config::get('database.default');
@@ -191,6 +192,7 @@ class InstallController extends Controller {
         }
 
         $dbEngines = Config::get('database.connections');
+
         foreach ($dbEngines as $driver => $v) {
             if (!extension_loaded("pdo_$driver")){
                 unset($dbEngines[ $driver ]);
@@ -229,6 +231,7 @@ class InstallController extends Controller {
         $layout->set($viewData);
 
         $is_installed = mw_is_installed();
+
         if ($is_installed){
             App::abort(403, 'Unauthorized action. Microweber is already installed.');
         }
