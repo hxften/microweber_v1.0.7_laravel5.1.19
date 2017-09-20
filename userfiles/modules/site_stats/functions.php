@@ -245,6 +245,18 @@ function get_visits_for_sid($sid) {
 }
 
 function stats_group_by($rows, $format) {
+    /*$rows = array
+    0 => 
+    object(stdClass)[447]
+      public 'visit_date' => string '2017-09-14' (length=10)
+      public 'unique_visits' => int 1
+      public 'total_visits' => string '29' (length=2)*/
+    /*$format = array 
+  0 => 
+    object(stdClass)[441]
+      public 'visit_date' => string '2017-08-29' (length=10)
+      public 'unique_visits' => int 1
+      public 'total_visits' => string '1' (length=1)*/
     $results = array();
     foreach ($rows as $row) {
         $group = Carbon::parse($row->visit_date)->format($format);
@@ -256,39 +268,43 @@ function stats_group_by($rows, $format) {
 
 function get_visits($range = 'daily') {
     $table = MODULE_DB_USERS_ONLINE;
+
     $table_real = mw()->database_manager->real_table_name($table);
     $q = false;
     $results = false;
     switch ($range) {
         case 'daily' :
             $ago = date("Y-m-d", strtotime("-1 month"));
+            //select `visit_date`, count(id) as unique_visits, sum(view_count) as total_visits from `microweber_stats_users_online` where `visit_date` > '2017-08-20' group by `id`
+
             $results = DB::table($table)
                 ->select('visit_date', DB::raw('count(id) as unique_visits, sum(view_count) as total_visits'))
                 ->where('visit_date', '>', $ago)
                 ->groupBy('id')
                 ->get();
-				
-			
-				
+
             break;
 
         case 'weekly' :
 			 
             $ago = date("Y-m-d", strtotime("-1 week"));
+            //select `visit_date`, count(id) as unique_visits, sum(view_count) as total_visits from `microweber_stats_users_online` where `visit_date` > '2017-09-13' group by `id`
+            
             $rows = DB::table($table)
                 ->select('visit_date', DB::raw('count(id) as unique_visits, sum(view_count) as total_visits'))
                 ->where('visit_date', '>', $ago)
 				->groupBy('id')
 
                 ->get();
-			
+
             $results = stats_group_by($rows, 'W');
-			
-			
+
             break;
 
         case 'monthly' :
             $ago = date("Y-m-d", strtotime("-1 year"));
+            //select `visit_date`, count(id) as unique_visits, sum(view_count) as total_visits from `microweber_stats_users_online` where `visit_date` > '2016-09-20' group by `id`
+            
             $rows = DB::table($table)
                 ->select('visit_date', DB::raw('count(id) as unique_visits, sum(view_count) as total_visits'))
                 ->where('visit_date', '>', $ago)
@@ -298,7 +314,8 @@ function get_visits($range = 'daily') {
             $results = stats_group_by($rows, 'm');
             break;
 
-        case 'last5' :
+        case 'last5' :       
+            //select * from `microweber_stats_users_online` order by `visit_date` desc, `visit_time` desc limit 5
             $results = DB::table($table)
                 ->orderBy('visit_date', 'desc')
                 ->orderBy('visit_time', 'desc')
@@ -310,6 +327,7 @@ function get_visits($range = 'daily') {
             $ago = date("H:i:s", strtotime("-1 minute"));
             $ago2 = date("Y-m-d", strtotime("now"));
             $total = 0;
+            //SELECT SUM(view_count) AS total_visits FROM microweber_stats_users_online WHERE visit_date='2017-09-20' AND visit_time>'17:27:13'
             $q = "SELECT SUM(view_count) AS total_visits FROM $table_real  WHERE visit_date='$ago2' AND visit_time>'$ago'   ";
             $results = mw()->database_manager->query($q);
             if (isset($results[0]) and isset($results[0]['total_visits'])){
