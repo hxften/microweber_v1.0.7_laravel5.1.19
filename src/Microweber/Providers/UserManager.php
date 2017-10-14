@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
 use Laravel\Socialite\SocialiteManager;
 use Illuminate\Support\Facades\Session;
+use Microweber\App\Jobs\Job;
+use Microweber\App\Jobs\SendCms;
+
 use Auth;
 use Validator;
 use User;
@@ -544,7 +547,10 @@ class UserManager
                 return array('error' => 'You cannot register with email from ' . $domain . ' domain');
             }
         }
-
+        // 队列发送测试, laravel5.1 dispatch 暂未通
+        //$job = (new SendCms($user,$email));
+        //dispatch($job);
+        //dispatch(new SendCms($user,$email));
 
         if (!$no_captcha) {
             if (!isset($params['captcha'])) {
