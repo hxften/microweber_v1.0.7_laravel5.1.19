@@ -1,4 +1,6 @@
 <?php
+
+
 if(defined('LARAVEL_START')){
     return;
 }
