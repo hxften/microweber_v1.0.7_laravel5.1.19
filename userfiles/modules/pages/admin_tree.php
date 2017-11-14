@@ -1,0 +1,134 @@
+<?php
+only_admin_access();
+/**
+ * Print the site pages as tree
+ *
+ * @param string append_to_link
+ *            You can pass any string to be appended to all pages urls
+ * @param string link
+ *            Replace the link href with your own. Ex: link="<?php print site_url('page_id:{id}'); ?>"
+ * @return string prints the site tree
+ * @uses pages_tree($params);
+ * @usage  type="pages" append_to_link="/editmode:y"
+ */
+$append_to_link = '';
+
+  $params['content_link_class'] = "mw-tree-renderer-admin-content-link-item";
+  $params['link'] = '<a data-page-id="{id}" class="mw-tree-renderer-admin-link-item {content_link_class} {active_class} {active_parent_class} pages_tree_link {nest_level} {exteded_classes}" href="{link}' . $append_to_link . '">{title}</a>';
+ 
+if (isset($params['data-parent'])) {
+    $params['parent'] = intval($params['data-parent']);
+} else {
+
+    $o = get_option('data-parent', $params['id']);
+    if ($o != false and intval($o) > 0) {
+        $params['parent'] = $o;
+    } else {
+        if (isset($params['content_id'])) {
+            $params['parent'] = intval($params['content_id']);
+        }
+
+
+    }
+}
+if (!isset($params['parent'])) {
+    //	$params['parent'] = 0;
+}
+$include_categories = false;
+if (isset($params['data-include_categories']) and isset($params['parent'])) {
+    $params['include_categories'] = intval($params['parent']);
+} else {
+
+    $o = get_option('include_categories', $params['id']);
+    if ($o != false and ($o) == 'y') {
+        $include_categories = $params['include_categories'] = true;
+    }
+}
+$o = get_option('maxdepth', $params['id']);
+
+if ($o != false and intval($o) > 0) {
+    $params['maxdepth'] = $o;
+}
+
+
+
+if (is_admin() == false) {
+    $params['is_active'] = 1;
+}
+
+ 
+
+$params['return_data'] = true;
+//$params['no_cache'] = true;
+
+?>
+
+<?php 
+/*  $params = array(22) {
+  ["type"]=>
+  string(5) "pages"
+  ["data-type"]=>
+  string(5) "pages"
+  ["data-template"]=>
+  string(5) "admin"
+  ["template"]=>
+  string(5) "admin"
+  ["data-active_ids"]=>
+  string(0) ""
+  ["active_ids"]=>
+  string(0) ""
+  ["data-active_class"]=>
+  string(9) "active-bg"
+  ["active_class"]=>
+  string(9) "active-bg"
+  ["data-id"]=>
+  string(18) "pages_tree_toolbar"
+  ["id"]=>
+  string(18) "pages_tree_toolbar"
+  ["data-view"]=>
+  string(10) "admin_tree"
+  ["view"]=>
+  string(10) "admin_tree"
+  ["data-home_first"]=>
+  string(4) "true"
+  ["home_first"]=>
+  string(4) "true"
+  ["parent-module"]=>
+  string(15) "content/backend"
+  ["data-parent-module"]=>
+  string(15) "content/backend"
+  ["parent-module-id"]=>
+  string(18) "mw-content-backend"
+  ["data-parent-module-id"]=>
+  string(18) "mw-content-backend"
+  ["module"]=>
+  string(5) "pages"
+  ["content_link_class"]=>
+  string(40) "mw-tree-renderer-admin-content-link-item"
+  ["link"]=>
+  string(194) "<a data-page-id="{id}" class="mw-tree-renderer-admin-link-item {content_link_class} {active_class} {active_parent_class} pages_tree_link {nest_level} {exteded_classes}" href="{link}">{title}</a>"
+  ["return_data"]=>
+  bool(true)
+}
+*/ ?>
+<?php $pages_tree = pages_tree($params); ?>
+
+<?php if ($pages_tree != ''): ?>
+    <!-- 页面 -->
+    <div class="pages-nav">
+        <div class="well" style="padding: 0;">
+            <?php print $pages_tree ?>
+        </div>
+    </div>
+<?php endif; ?>
+<?php $is_del = get_content('count=1&is_deleted=1'); ?>
+
+<!-- 回收站 -->
+<ul class="pages_tree pages_trash_holder depth-1">
+    <li class="pages_trash pages_tree_item  depth-1" title="<?php _e("Trash"); ?>">
+    <a data-page-id="deleted" class="pages_trash_link pages_tree_link depth-1"  onclick="mw.url.windowHashParam('action', 'trash');"
+        href="javascript: return false;">
+    <span  class="pages_tree_link_text pages_trash_text"><?php _e("Trash"); ?></span>
+    </a>
+    </li>
+</ul>
