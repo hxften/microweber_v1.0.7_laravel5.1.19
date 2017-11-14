@@ -1,6 +1,6 @@
 <?php
 
-//22
+//1
 if(defined('LARAVEL_START')){
     return;
 }
