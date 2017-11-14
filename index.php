@@ -1,7 +1,5 @@
 <?php
-
-
-//11111
+//a
 if(defined('LARAVEL_START')){
     return;
 }
