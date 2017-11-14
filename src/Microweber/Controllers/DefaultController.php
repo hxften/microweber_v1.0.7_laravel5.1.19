@@ -39,7 +39,7 @@ class DefaultController extends Controller
     }
 
     public function index()
-    {
+    {   //bb
         $is_installed = mw_is_installed();
         if (!$is_installed) {
             $installer = new InstallController($this->app);
