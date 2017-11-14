@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Config;
 use Laravel\Socialite\SocialiteManager;
 use Illuminate\Support\Facades\Session;
 use Auth;
+<<<<<<< HEAD
+=======
+use Validator;
+>>>>>>> e5630b1de201e1db22a13c3c4f512a8ccb0e35d0
 use User;
 
 if (!defined('MW_USER_IP')) {
@@ -640,8 +644,39 @@ class UserManager
                     if (isset($params['attributes'])) {
                         $reg['attributes'] = $params['attributes'];
                     }
+<<<<<<< HEAD
                     
                     $next = $this->save($reg);
+=======
+
+            /*$rules = array(
+                'username' => 'required|min:4|max:20',
+                'email' => 'required|email',
+                'countrycode' => 'required|numeric',
+                'mobile' => 'required|numeric|digits_between:5,11',
+                'company_name' => 'required|between:3,20',
+            );
+            //$validator = Validator::make($reg, $rules);
+
+            $messages = [
+                "username.min" => "The user name is at least 44 bytes.",
+                "email" => "Must be a valid mailbox.",
+                'countrycode.numeric' => 'country must be digital.',
+                'mobile.digits_between' => 'mobile must be attribute must be between 5 and 11.',
+                'company_name.between' => 'companyname least 3 bytes.',
+            ];
+            $validator = Validator::make($reg, $rules, $messages);
+            if ($validator->fails()) {
+                //$res['error'] = 'true';
+                //return $res;
+                return array('error' => $validator->messages());
+            }*/
+            
+
+                    $next = $this->save($reg);
+                    echo 'next:'.$next;
+                    
+>>>>>>> e5630b1de201e1db22a13c3c4f512a8ccb0e35d0
                     $this->force_save = false;
                     $this->app->cache_manager->delete('users/global');
                     $this->session_del('captcha');
@@ -653,7 +688,24 @@ class UserManager
                     if (isset($pass2)) {
                         $params['password2'] = $pass2;
                     }
+<<<<<<< HEAD
                     $this->make_logged($params['id']);
+=======
+                    /*$params = array(
+                          'username' ='jgwftest@163.com',
+                          'password' ='123aaa',
+                          'is_active' = 1,
+                          'id' =11,
+                          'password2' ='123aaa') */
+                    
+
+                    $this->make_logged($params['id']);
+                    /*$user_session = array(
+                      'is_logged' ='yes',
+                      'user_id' =12,
+                      'old_session_id' ='8dafedc397f5472844e371ceaaecefcb3809ebb4',
+                      'success' ='You are logged in!)'*/
+>>>>>>> e5630b1de201e1db22a13c3c4f512a8ccb0e35d0
 
                     return array('success' => 'You have registered successfully');
                 } else {
@@ -674,6 +726,10 @@ class UserManager
             ob_start();
         }
         $data = $this->get_by_id($user_id);
+<<<<<<< HEAD
+=======
+
+>>>>>>> e5630b1de201e1db22a13c3c4f512a8ccb0e35d0
         if (!$data) {
             return;
         }

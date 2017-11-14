@@ -36,6 +36,33 @@ if($params['subtype'] == 'graph')
 
       }
 
+ $last_page_front =   session_get('last_content_id');
+
+ if( $last_page_front == false){
+	  if(isset($_COOKIE['last_page'])){
+		  $last_page_front = $_COOKIE['last_page'];
+	  }
+ }
+
+  if( $last_page_front  != false){
+   // $past_page = site_url($last_page_front);
+
+        $cont_by_url = mw()->content_manager->get_by_id($last_page_front , true);
+
+    if(isset($cont_by_url) and $cont_by_url == false){
+        $past_page=get_content("order_by=updated_at desc&limit=1");
+        $past_page = mw()->content_manager->link($past_page[0]['id']);
+    } else {
+		 $past_page = mw()->content_manager->link($last_page_front);
+	}
+
+  }
+  else {
+  	$past_page=get_content("order_by=updated_at desc&limit=1");
+      $past_page = mw()->content_manager->link($past_page[0]['id']);
+
+  }
+
  ?>
 
 <div id="stats">
@@ -125,6 +152,7 @@ $(document).ready(function(){
 
 </script>
 <?php  } else if(isset($params['user-sid']) and $params['subtype'] == 'quick'){ ?>
+
 <?php 
     $users_last5 = get_visits_for_sid($params['user-sid']);
  ?>

@@ -1531,7 +1531,11 @@ class CategoryManager {
                 })
                 ->whereRelType('categories')
                 ->update(['rel_id' => $id]);
-        });
+
+        }); 
+
+//update `microweber_custom_fields` set `rel_type` = categories, `rel_id` = 13 where `session_id` = 'a9d5712b0a059ba18dc438e4e565226184187a16' and (`rel_id` = 0 or `rel_id` is null) and `rel_type` = 'categories'
+//update `microweber_media` set `rel_id` = 13 where `session_id` = 'a9d5712b0a059ba18dc438e4e565226184187a16' and (`rel_id` = 0 or `rel_id` is null) and `rel_type` = 'categories'
 
         //$this->app->cache_manager->clear('media');
 

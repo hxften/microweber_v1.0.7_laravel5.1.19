@@ -2,8 +2,10 @@
 only_admin_access();
 
    $users_last5 = get_visits('last5');
+
 //$requests_num = get_visits('requests_num');
 $requests_num = false;
+
 ?>
   <div id="visits_info_table">
   <h2><?php _e("Basic statistics"); ?>
@@ -43,6 +45,18 @@ white-space: normal;
     </div>
 </div>
     <div class="mw-ui-col">
+
+    <!--array (size=5)
+  0 => 
+    array (size=8)
+      'id' => int 13
+      'created_by' => null
+      'view_count' => int 1
+      'user_ip' => string '127.0.0.1'
+      'visit_date' => string '2017-09-20'
+      'visit_time' => string '16:30:35'
+      'last_page' => string 'http://microweber1.0.7.app/'
+      'session_id' => string '082bf141dcd802264206de322c82fba7b13ceb79'-->
           <?php if(!empty($users_last5)): ?>
 
 

@@ -3,9 +3,7 @@ if(defined('LARAVEL_START')){
     return;
 }
 
-
-
-if (version_compare(phpversion(), "5.4.0", "<=")) { 
+if (version_compare(phpversion(), "5.4.0", "<=")) {
     exit("Error: You must have PHP version 5.4 or greater to run Microweber");
 }
 
